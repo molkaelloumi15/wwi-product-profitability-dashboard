@@ -1,61 +1,103 @@
-Product & Brand Profitability Dashboard — Wide World Importers
+<div align="center">
 
-Tableau de bord Power BI analysant la rentabilité des produits et des marques à partir du jeu de données Wide World Importers (Microsoft).
+# 📊 Product & Brand Profitability Dashboard
+### Wide World Importers
 
-Contexte et objectif
+*Tableau de bord Power BI pour l'analyse de rentabilité produits & marques*
 
-Ce projet a été réalisé pour renforcer mes compétences en Business Intelligence (modélisation de données, DAX, data visualisation) dans une logique orientée décision produit : identifier quels produits et marques génèrent le plus de profit, et où se situent les opportunités d'optimisation.
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![DAX](https://img.shields.io/badge/DAX-217346?style=for-the-badge&logo=microsoft&logoColor=white)
+![Status](https://img.shields.io/badge/status-en%20cours-orange?style=for-the-badge)
 
-Problème métier traité : quels produits/marques faut-il prioriser commercialement, et lesquels génèrent du volume sans réelle rentabilité ?
+</div>
 
-Source des données
+---
 
-Jeu de données public Wide World Importers (base de données d'exemple Microsoft, format star schema), composé de :
+## 🎯 Objectif
 
-Table	Contenu
-FactSale	Table de faits — ventes, quantités, prix, taxes, profit
-DimStockItem	Produits, marques (Brand), catégories
-DimCustomer	Clients
-DimCity	Zones géographiques, territoires de vente
-DimDate	Calendrier (jour, mois, année, fiscal)
-DimEmployee	Vendeurs
-Modèle de données
+Ce projet a été réalisé pour renforcer mes compétences en **Business Intelligence** (modélisation de données, DAX, data visualisation), avec une approche orientée décision produit.
 
-Schéma en étoile : FactSale est reliée aux 5 dimensions via les clés suivantes :
+> **Problème métier traité :** quels produits et marques faut-il prioriser commercialement, et lesquels génèrent du volume sans réelle rentabilité ?
 
-FactSale[Stock Item Key] ↔ DimStockItem
-FactSale[Customer Key] ↔ DimCustomer
-FactSale[City Key] ↔ DimCity
-FactSale[Invoice Date Key] ↔ DimDate[Date]
-FactSale[Salesperson Key] ↔ DimEmployee
+---
 
-(Capture du modèle à ajouter ici une fois finalisée)
+## 🗂️ Source des données
 
-Mesures DAX principales
-dax
-Total Profit = SUM(FactSale[Profit])
+Jeu de données public **Wide World Importers** (base d'exemple Microsoft), structuré en étoile.
 
-Total Revenue = SUM(FactSale[Total Excluding Tax])
+| Table | Contenu |
+|:---|:---|
+| 🧾 `FactSale` | Ventes, quantités, prix, taxes, profit |
+| 📦 `DimStockItem` | Produits, marques, catégories |
+| 👤 `DimCustomer` | Clients |
+| 🌍 `DimCity` | Zones géographiques, territoires de vente |
+| 📅 `DimDate` | Calendrier (jour, mois, année, fiscal) |
+| 🧑‍💼 `DimEmployee` | Vendeurs |
 
-Profit Margin % = DIVIDE([Total Profit], [Total Revenue])
+---
 
-Total Quantity = SUM(FactSale[Quantity])
-Pages du dashboard
-Vue d'ensemble — KPI clés (Total Profit, Total Revenue, Profit Margin %, Total Quantity), filtrable par année
-Profitabilité par produit/marque — Top 10 marques par profit, répartition par catégorie, marge vs volume
-Tendances dans le temps (à venir) — évolution du profit et de la marge par mois/année
-Performance par zone/vendeur (à venir) — analyse géographique et par commercial
-Insights clés
+## 🧩 Modèle de données
 
-(Section à compléter une fois l'analyse terminée — exemple de format :)
+Schéma en étoile — `FactSale` reliée à 5 dimensions :
 
-La marque X représente X % du profit total pour seulement X % du volume de ventes
-Le territoire de vente X affiche la meilleure marge moyenne
-...
-Technologies utilisées
+```
+DimStockItem ─┐
+DimCustomer ──┤
+DimCity ──────┼── FactSale
+DimDate ──────┤
+DimEmployee ──┘
+```
 
-Power BI Desktop · Power Query · DAX · Modélisation en étoile
+| Relation | Clé |
+|:---|:---|
+| FactSale ↔ DimStockItem | `Stock Item Key` |
+| FactSale ↔ DimCustomer | `Customer Key` |
+| FactSale ↔ DimCity | `City Key` |
+| FactSale ↔ DimDate | `Invoice Date Key` → `Date` |
+| FactSale ↔ DimEmployee | `Salesperson Key` |
 
-Captures d'écran
 
-(À ajouter dans un dossier /screenshots une fois le dashboard finalisé)
+---
+
+## 📐 Mesures DAX
+
+```dax
+Total Profit      = SUM(FactSale[Profit])
+Total Revenue      = SUM(FactSale[Total Excluding Tax])
+Profit Margin %    = DIVIDE([Total Profit], [Total Revenue])
+Total Quantity     = SUM(FactSale[Quantity])
+```
+
+---
+
+## 📑 Pages du dashboard
+
+- [x] **Vue d'ensemble** — KPI clés, filtrable par année
+- [x] **Profitabilité par produit/marque** — Top 10, répartition par catégorie, marge vs volume
+- [ ] **Tendances dans le temps** — évolution mensuelle/annuelle
+- [ ] **Performance par zone/vendeur** — analyse géographique et commerciale
+
+---
+
+## 💡 Insights clés
+
+
+
+---
+
+## 🖼️ Aperçu
+
+
+---
+
+## 🛠️ Stack technique
+
+`Power BI Desktop` · `Power Query` · `DAX` · `Modélisation en étoile`
+
+---
+
+<div align="center">
+
+**🚧 Projet en cours de construction 🚧**
+
+</div>
